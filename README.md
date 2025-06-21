@@ -17,7 +17,7 @@
 The world of scientific publishing faces a crisis of trust. Every year, thousands of papers are retracted due to errors, misconduct, or outright fraud. This "retraction debt" wastes researchers' time, misleads journalists, and erodes public confidence in science.
 How can we identify high-risk papers before they cause damage?
 PaperLens was born from this challenge. It's a data-driven tool designed to provide an instantaneous risk assessment for any scientific paper with a DOI. Our goal is to empower researchers, editors, and science communicators to navigate the vast scientific literature with greater confidence.
-[!SUCCESS]
+> [!SUCCESS]
 Mission: To enhance scientific integrity by making retraction risk transparent and quantifiable.
 
 <details>
@@ -66,10 +66,11 @@ The project is built with a modern, decoupled architecture to ensure scalability
 </details>
 
 🚀 Live Demo
+The interactive web application is currently under active development. A live prototype will be available here soon!
 [Link to be added] - Explore the PaperLens prototype and analyze a paper yourself!
 👉 Launch the PaperLens App
 
-[!IMPORTANT]
+> [!IMPORTANT]
 This is a functional prototype developed for a Data Analytics Bootcamp. The model is trained on historical data and is intended for educational and demonstrative purposes.
 
 <details>
@@ -94,7 +95,7 @@ paperlens/
 │   └── 02_Analysis_and_Modeling.ipynb
 ├── src/
 │   └── feature_extractor.py
-└── README.md
+└── scripts
 ```
 </details>
 
@@ -102,7 +103,6 @@ paperlens/
 <summary>👨‍💻 <strong>Author</strong></summary>
 
 [![GitHub](https://img.shields.io/badge/@xavistem-GitHub-181717?logo=github&style=flat-square)](https://github.com/xavistem)
-[![LinkedIn](https://img.shields.io/badge/@xavifernandez-LinkedIn-0077B5?logo=linkedin&style=flat-square)](https://www.linkedin.com/in/xavifernandeztorras/)
 </details>
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)
@@ -111,4 +111,4 @@ paperlens/
 ![XGBoost](https://img.shields.io/badge/XGBoost-Modeling-blue.svg?style=flat-square)
 ![React](https://img.shields.io/badge/React-WebApp-blue?logo=react)
 ![Flask](https://img.shields.io/badge/Flask-API-grey?logo=flask)
-![Status](https://img.shields.io/badge/Status-In%20Progress-blue)
+![Status](https://img.shields.io/badge/Status-Finished-brightgreen)
