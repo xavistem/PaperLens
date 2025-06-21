@@ -1,5 +1,5 @@
 <div align="center">
-<img src="URL_DE_TU_LOGO_AQUI" width="200" height="200" />
+<img src="https://github.com/user-attachments/assets/0e4e0df2-9c7c-4e0c-8be8-857053bf735b" width="200" height="200" />
 <h1>PaperLens: AI-Powered Retraction Risk Analysis</h1>
 <p>
 <i>A machine learning tool to assess the integrity and predict the retraction risk of scientific papers before you read or cite them.</i>
