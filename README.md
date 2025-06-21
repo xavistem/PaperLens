@@ -16,9 +16,9 @@
 🔬 Business Context
 The world of scientific publishing faces a crisis of trust. Every year, thousands of papers are retracted due to errors, misconduct, or outright fraud. This "retraction debt" wastes researchers' time, misleads journalists, and erodes public confidence in science.
 How can we identify high-risk papers before they cause damage?
-PaperLens was born from this challenge. It's a data-driven tool designed to provide an instantaneous risk assessment for any scientific paper with a DOI. Our goal is to empower researchers, editors, and science communicators to navigate the vast scientific literature with greater confidence.
-> [!SUCCESS]
-Mission: To enhance scientific integrity by making retraction risk transparent and quantifiable.
+PaperLens was born from this challenge. It's a data-driven tool designed to provide an instantaneous risk assessment for any scientific paper with a DOI. Our goal is to empower researchers, editors, and science communicators to navigate the vast scientific literature with greater confidence.  
+
+> ✅ Mission: To enhance scientific integrity by making retraction risk transparent and quantifiable.
 
 <details>
 <summary>🎯 <strong>Project Overview & Methodology</strong></summary>
@@ -65,9 +65,10 @@ The project is built with a modern, decoupled architecture to ensure scalability
 
 </details>
 
-🚀 Live Demo
-The interactive web application is currently under active development. A live prototype will be available here soon!
-[Link to be added] - Explore the PaperLens prototype and analyze a paper yourself!
+🚀 Live Demo  
+> [!NOTE]
+The interactive web application is currently under active development. A live prototype will be available here soon!  
+[Link to be added] - Explore the PaperLens prototype and analyze a paper yourself!  
 👉 Launch the PaperLens App
 
 > [!IMPORTANT]
