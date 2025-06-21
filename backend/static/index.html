@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperLens - Evaluación de Integridad Científica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-microscope me-2"></i>
+                PaperLens
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">Cómo Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Acerca de</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-primary mb-4">
+                        Evalúa la Integridad Científica en Segundos
+                    </h1>
+                    <p class="lead mb-4">
+                        PaperLens utiliza inteligencia artificial para predecir el riesgo de retracción de cualquier artículo científico, ayudando a investigadores, periodistas y estudiantes a evaluar la confiabilidad de las publicaciones.
+                    </p>
+                    
+                    <!-- Input Section -->
+                    <div class="card shadow-lg">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-3">
+                                <i class="fas fa-search me-2"></i>
+                                Analiza un Paper
+                            </h5>
+                            <form id="analysisForm">
+                                <div class="input-group mb-3">
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="doiInput" 
+                                           placeholder="Ingresa el DOI del paper (ej: 10.1038/nature12345)"
+                                           required>
+                                    <button class="btn btn-primary btn-lg" type="submit" id="analyzeBtn">
+                                        <i class="fas fa-play me-2"></i>
+                                        Analizar
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <!-- Loading State -->
+                            <div id="loadingState" class="text-center d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Analizando...</span>
+                                </div>
+                                <p class="mt-2 text-muted">Analizando el paper...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <img src="../Logo transparent background.jpg" alt="PaperLens Logo" class="img-fluid" style="max-width: 400px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="py-5 d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <h3 class="card-title">Resultados del Análisis</h3>
+                                <p class="text-muted">Evaluación de riesgo de retracción</p>
+                            </div>
+                            
+                            <!-- Risk Score Display -->
+                            <div class="text-center mb-4">
+                                <div class="risk-gauge-container">
+                                    <div class="risk-gauge" id="riskGauge">
+                                        <div class="gauge-value" id="riskScore">0</div>
+                                        <div class="gauge-label" id="riskLevel">Sin riesgo</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Paper Info -->
+                            <div class="paper-info mb-4">
+                                <h5>Información del Paper</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>DOI:</strong> <span id="paperDoi">-</span></p>
+                                        <p><strong>Título:</strong> <span id="paperTitle">-</span></p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Autores:</strong> <span id="paperAuthors">-</span></p>
+                                        <p><strong>Revista:</strong> <span id="paperJournal">-</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Risk Factors -->
+                            <div class="risk-factors mb-4">
+                                <h5>Factores de Riesgo Identificados</h5>
+                                <div id="riskFactorsList">
+                                    <p class="text-muted">No se identificaron factores de riesgo específicos.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Disclaimer -->
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Descargo de responsabilidad:</strong> Esta herramienta utiliza datos históricos y aprendizaje automático para predecir el riesgo de retracción. Los resultados son informativos y no constituyen una evaluación definitiva de la calidad del paper.
+                            </div>
+                            
+                            <div class="text-center">
+                                <button class="btn btn-outline-primary" onclick="resetAnalysis()">
+                                    <i class="fas fa-redo me-2"></i>
+                                    Analizar Otro Paper
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Cómo Funciona</h2>
+                    <p class="lead">Proceso simple de tres pasos</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <i class="fas fa-link fa-3x text-primary mb-3"></i>
+                        <h4>Ingresa el DOI</h4>
+                        <p>Pega el identificador digital del paper que quieres analizar</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <i class="fas fa-brain fa-3x text-primary mb-3"></i>
+                        <h4>IA Analiza Metadatos</h4>
+                        <p>Nuestro modelo XGBoost evalúa múltiples factores de riesgo</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
+                        <h4>Obtén el Score</h4>
+                        <p>Recibe una puntuación de riesgo y factores identificados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">Características</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                    <h5>Potenciado por XGBoost</h5>
+                    <p>Modelo de machine learning avanzado</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                    <h5>Entrenado en 100k+ Papers</h5>
+                    <p>Basado en datos de Retraction Watch</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-balance-scale fa-3x text-primary mb-3"></i>
+                    <h5>Estudio Caso-Control</h5>
+                    <p>Metodología científica rigurosa</p>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center mb-4">
+                    <i class="fas fa-bolt fa-3x text-primary mb-3"></i>
+                    <h5>Resultados Instantáneos</h5>
+                    <p>Análisis en segundos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center mb-4">Acerca de PaperLens</h2>
+                    <p class="lead text-center mb-4">
+                        PaperLens nace de la necesidad de abordar la crisis de confianza en la investigación científica.
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-target me-2"></i>Nuestro Objetivo</h5>
+                            <p>Proporcionar una herramienta rápida y confiable para evaluar la integridad de las publicaciones científicas antes de citarlas o reportarlas.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5><i class="fas fa-users me-2"></i>Para Quién</h5>
+                            <p>Investigadores, periodistas científicos, estudiantes y cualquier persona que necesite evaluar la confiabilidad de papers científicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 PaperLens. Herramienta de evaluación de integridad científica.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
